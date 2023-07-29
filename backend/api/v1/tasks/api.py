@@ -10,8 +10,8 @@ router = Router()
 
 
 @router.post('/')
-def create_task(request, payload: TaskIn) -> dict:
-    task = Tasks.objects.create(**payload.dict())
+async def create_task(request, payload: TaskIn) -> dict:
+    task = await Tasks.objects.acreate(**payload.dict())
     return {"id": task.id}
 
 
