@@ -3,49 +3,47 @@ from typing import List
 from ninja import Router
 from apps.categories.models import Category
 
-from api.v1.categories.schema import CategoriesSchema, NotFoundSchema
+from api.v1.categories.schema import CategoryOut, CategoryIn, NotFoundSchema
 
 router = Router()
 
 
-@router.get('/', response=List[CategoriesSchema])
-def list_tasks(request):
-    return Category.objects.all()
+@router.post('/')
+async def create_task(request, payload: CategoryIn) -> dict:
+    category = await Category.objects.acreate(**payload.dict())
+    return {'id': category.id}
 
 
-@router.get('/{category_id}', response={200: CategoriesSchema, 404: NotFoundSchema})
-def detail_task(request, category_id: int):
+@router.get('/', response=List[CategoryOut])
+async def list_tasks(request) -> list:
+    return [category async for category in Category.objects.all()]
+
+
+@router.get('/{category_id}', response=CategoryOut)
+async def detail_task(request, category_id: int) -> dict:
     try:
-        category = Category.objects.get(id=category_id)
-        return category
+        return await Category.objects.aget(id=category_id)
     except Category.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
+        return {'message': 'Category does not exist'}
 
 
-@router.post('/', response={201: CategoriesSchema})
-def create_task(request, category: CategoriesSchema):
-    category = Category.objects.create(**category.dict())
-    return category
-
-
-@router.put('/{category_id}', response={200: CategoriesSchema, 404: NotFoundSchema})
-def update_task(request, category_id: int, data: CategoriesSchema):
+@router.put('/{category_id}')
+async def update_task(request, category_id: int, payload: CategoryIn) -> dict:
     try:
-        category = Category.objects.get(id=category_id)
-        for attribute, value in data.dict().items():
+        category = await Category.objects.aget(id=category_id)
+        for attribute, value in payload.dict().items():
             setattr(category, attribute, value)
-        category.save()
-        return 200, category
+        await category.asave()
+        return {'success': True}
     except Category.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
+        return {'message': 'Category does not exist'}
 
 
-@router.delete('/{category_id}', response={200: CategoriesSchema, 404: NotFoundSchema})
-def delete_task(request, category_id: int):
+@router.delete('/{category_id}')
+async def delete_task(request, category_id: int) -> dict:
     try:
-        category = Category.objects.get(id=category_id)
-        category.delete()
-        return 200
+        category = await Category.objects.aget(id=category_id)
+        await category.adelete()
+        return {'success': True}
     except Category.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
-
+        return {'message': 'Task does not exist'}
