@@ -1,7 +1,6 @@
 from typing import List
 
 from asgiref.sync import sync_to_async
-from django.shortcuts import get_object_or_404
 from ninja import Router
 from apps.tasks.models import Tasks
 
