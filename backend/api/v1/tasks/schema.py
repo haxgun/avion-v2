@@ -1,8 +1,4 @@
-from datetime import datetime
-
 from ninja import Schema, ModelSchema
-from typing import Optional
-
 from apps.tasks.models import Tasks
 
 
