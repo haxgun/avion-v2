@@ -30,7 +30,7 @@ git clone https://github.com/MAGICXcmd/avion-v2.git
 cd avion-v2
 python -m pip install pipenv
 pipenv install
-pipenv shell
-python manage.py migrage
-python manage.py runserver
+cd backend
+pipenv run python manage.py migrage
+uvicorn config.asgi:application --reload
 ```
