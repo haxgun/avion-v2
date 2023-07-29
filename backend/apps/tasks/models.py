@@ -16,15 +16,16 @@ class Tasks(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=16384, null=True, blank=True)
-    complete = models.BooleanField(default=False)
-    creation_date = models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False, blank=True)
+    creation_date = models.DateTimeField(auto_now_add=True, blank=True)
     due_date = models.DateTimeField(null=True, blank=True)
-    is_attached = models.BooleanField(default=False)
+    is_attached = models.BooleanField(default=False, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     priority = models.CharField(
         max_length=30,
         choices=PRIORITIES,
-        default=PRIORITIES[-1][0]
+        default=PRIORITIES[-1][0],
+        blank = True
     )
 
     def __str__(self):
