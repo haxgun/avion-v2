@@ -26,6 +26,8 @@ if os.path.isfile(dotenv_file):
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-pae)@rir#g0^2#fncf)bh(yj%*&pg35($w%qd$)3!=ksqcm#cr"
 
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

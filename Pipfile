@@ -12,6 +12,7 @@ tzdata = "==2023.3"
 whitenoise = "==6.5.0"
 python-dotenv = "*"
 django-ninja = "*"
+uvicorn = "*"
 
 [dev-packages]
 
