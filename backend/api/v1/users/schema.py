@@ -1,17 +1,18 @@
 from datetime import datetime
 
-from ninja import Schema
+from ninja import Schema, ModelSchema
+
+from apps.users.models import User
 
 
-class UserSchema(Schema):
+class UserOutF(Schema):
     id: int
-    nickname: str
-    email: str
-    last_login: datetime
-    date_join: datetime
-    is_superuser: bool
-    is_staff: bool
-    is_active: bool
+
+
+class UserOut(ModelSchema):
+    class Config:
+        model = User
+        model_fields = ('id', 'nickname', 'email', 'last_login', 'date_joined', 'is_active')
 
 
 class NotFoundSchema(Schema):
