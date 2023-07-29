@@ -1,19 +1,15 @@
 from datetime import datetime
 
-from ninja import Schema
+from ninja import Schema, ModelSchema
 from typing import Optional
 
+from apps.tasks.models import Tasks
 
-class TasksSchema(Schema):
-    user: Optional[int]
-    title: str
-    description: Optional[str]
-    complete: bool
-    creation_date: Optional[datetime]
-    due_date: Optional[datetime]
-    is_attached: bool
-    category: Optional[int]
-    priority: str
+
+class TasksSchema(ModelSchema):
+    class Config:
+        model = Tasks
+        model_fields = ['user', 'title', 'description', 'complete', 'creation_date', 'due_date', 'is_attached', 'category', 'priority']
 
 
 class NotFoundSchema(Schema):
