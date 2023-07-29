@@ -3,6 +3,8 @@ from django.db import models
 
 from apps.categories.models import Category
 
+User = get_user_model()
+
 
 class Tasks(models.Model):
     PRIORITIES = (
@@ -13,7 +15,7 @@ class Tasks(models.Model):
         ('edefault', 'Обычный')
     )
 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=16384, null=True, blank=True)
     complete = models.BooleanField(default=False, blank=True)
