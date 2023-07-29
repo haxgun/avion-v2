@@ -1,51 +1,50 @@
 from typing import List
 
+from asgiref.sync import sync_to_async
+from django.shortcuts import get_object_or_404
 from ninja import Router
 from apps.tasks.models import Tasks
 
-from api.v1.tasks.schema import TasksSchema, NotFoundSchema
+from api.v1.tasks.schema import TaskIn, TaskOut, NotFoundSchema
 
 router = Router()
 
 
-@router.get('/', response=List[TasksSchema])
-def list_tasks(request):
-    return Tasks.objects.all()
+@router.post('/')
+def create_task(request, payload: TaskIn) -> dict:
+    task = Tasks.objects.create(**payload.dict())
+    return {"id": task.id}
 
 
-@router.get('/{task_id}', response={200: TasksSchema, 404: NotFoundSchema})
-def detail_task(request, task_id: int):
+@router.get('/', response=List[TaskOut])
+async def list_tasks(request) -> list:
+    qs = Tasks.objects.select_related('user', 'category')
+    return await sync_to_async(list)(qs)
+
+
+@router.get('/{task_id}', response=TaskOut)
+async def detail_task(request, task_id: int) -> dict:
+    return await Tasks.objects.aget(pk=task_id)
+
+
+@router.put('/{task_id}')
+async def update_task(request, task_id: int, payload: TaskIn) -> dict:
     try:
-        task = Tasks.objects.get(id=task_id)
-        return task
-    except Tasks.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
-
-
-@router.post('/', response={201: TasksSchema})
-def create_task(request, task: TasksSchema):
-    task = Tasks.objects.create(**task.dict())
-    return task
-
-
-@router.put('/{task_id}', response={200: TasksSchema, 404: NotFoundSchema})
-def update_task(request, task_id: int, data: TasksSchema):
-    try:
-        task = Tasks.objects.get(id=task_id)
-        for attribute, value in data.dict().items():
+        task = await Tasks.objects.aget(id=task_id)
+        for attribute, value in payload.dict().items():
             setattr(task, attribute, value)
-        task.save()
-        return 200, task
+        await task.asave()
+        return {"success": True}
     except Tasks.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
+        return {"message": "Task does not exist"}
 
 
-@router.delete('/{task_id}', response={200: TasksSchema, 404: NotFoundSchema})
-def delete_task(request, task_id: int):
+@router.delete('/{task_id}')
+async def delete_task(request, task_id: int) -> dict:
     try:
-        task = Tasks.objects.get(id=task_id)
-        task.delete()
-        return 200
+        task = await Tasks.objects.aget(id=task_id)
+        await task.adelete()
+        return {"success": True}
     except Tasks.DoesNotExist as e:
-        return 404, {"message": "Task does not exist"}
+        return {"message": "Task does not exist"}
 
