@@ -1,6 +1,5 @@
 from typing import List
 
-from asgiref.sync import sync_to_async
 from ninja import Router
 from apps.tasks.models import Tasks
 
@@ -12,18 +11,20 @@ router = Router()
 @router.post('/')
 async def create_task(request, payload: TaskIn) -> dict:
     task = await Tasks.objects.acreate(**payload.dict())
-    return {"id": task.id}
+    return {'id': task.id}
 
 
 @router.get('/', response=List[TaskOut])
 async def list_tasks(request) -> list:
-    qs = Tasks.objects.select_related('user', 'category')
-    return await sync_to_async(list)(qs)
+    return [task async for task in Tasks.objects.all()]
 
 
 @router.get('/{task_id}', response=TaskOut)
 async def detail_task(request, task_id: int) -> dict:
-    return await Tasks.objects.aget(pk=task_id)
+    try:
+        return await Tasks.objects.aget(id=task_id)
+    except Tasks.DoesNotExist as e:
+        return {'message': 'Task does not exist'}
 
 
 @router.put('/{task_id}')
@@ -33,9 +34,9 @@ async def update_task(request, task_id: int, payload: TaskIn) -> dict:
         for attribute, value in payload.dict().items():
             setattr(task, attribute, value)
         await task.asave()
-        return {"success": True}
+        return {'success': True}
     except Tasks.DoesNotExist as e:
-        return {"message": "Task does not exist"}
+        return {'message': 'Task does not exist'}
 
 
 @router.delete('/{task_id}')
@@ -43,7 +44,6 @@ async def delete_task(request, task_id: int) -> dict:
     try:
         task = await Tasks.objects.aget(id=task_id)
         await task.adelete()
-        return {"success": True}
+        return {'success': True}
     except Tasks.DoesNotExist as e:
-        return {"message": "Task does not exist"}
-
+        return {'message': 'Task does not exist'}
