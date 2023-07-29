@@ -5,7 +5,7 @@
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.11.4-informational.svg">
-  <img src="https://img.shields.io/badge/Django->=2.2-informational.svg">
+  <img src="https://img.shields.io/badge/Django-4.2.3-informational.svg">
   <img src="https://img.shields.io/badge/Django--ninja-0.22.2-informational.svg">
   <a href="https://github.com/MAGICXcmd/avion/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/MAGICXcmd/avion-v2">
