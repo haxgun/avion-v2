@@ -31,6 +31,6 @@ cd avion-v2
 python -m pip install pipenv
 pipenv install
 cd backend
-pipenv run python manage.py migrage
-uvicorn config.asgi:application --reload
+pipenv run migrate
+pipenv run server
 ```

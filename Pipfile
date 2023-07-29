@@ -18,3 +18,7 @@ uvicorn = "*"
 
 [requires]
 python_version = "3.11"
+
+[scripts]
+migrate = "python manage.py migrate"
+server = "uvicorn config.asgi:application --reload"
