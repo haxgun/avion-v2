@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from categories.models import Category
+from apps.categories.models import Category
 
 
 class Tasks(models.Model):
