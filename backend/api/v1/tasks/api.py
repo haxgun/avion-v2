@@ -20,3 +20,32 @@ def detail_task(request, task_id: int):
         return task
     except Tasks.DoesNotExist as e:
         return 404, {"message": "Task does not exist"}
+
+
+@router.post('/', response={201: TasksSchema})
+def create_task(request, task: TasksSchema):
+    task = Tasks.objects.create(**task.dict())
+    return task
+
+
+@router.put('/{task_id}', response={200: TasksSchema, 404: NotFoundSchema})
+def update_task(request, task_id: int, data: TasksSchema):
+    try:
+        task = Tasks.objects.get(id=task_id)
+        for attribute, value in data.dict().items():
+            setattr(task, attribute, value)
+        task.save()
+        return 200, task
+    except Tasks.DoesNotExist as e:
+        return 404, {"message": "Task does not exist"}
+
+
+@router.delete('/{task_id}', response={200: TasksSchema, 404: NotFoundSchema})
+def delete_task(request, task_id: int):
+    try:
+        task = Tasks.objects.get(id=task_id)
+        task.delete()
+        return 200
+    except Tasks.DoesNotExist as e:
+        return 404, {"message": "Task does not exist"}
+
