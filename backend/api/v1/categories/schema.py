@@ -1,17 +1,8 @@
-from typing import Optional
-
 from ninja import Schema, ModelSchema
 from apps.categories.models import Category
+from ninja.orm import create_schema
 
-from api.v1.users.schema import UserOut
-
-
-class CategoryOut(ModelSchema):
-    user: UserOut
-
-    class Config:
-        model = Category
-        model_fields = ('id', 'title', 'description', 'color')
+CategoryOut = create_schema(Category)
 
 
 class CategoryIn(ModelSchema):
@@ -19,7 +10,7 @@ class CategoryIn(ModelSchema):
 
     class Config:
         model = Category
-        model_fields = ('title', 'description', 'color')
+        model_fields = ('title', 'description', 'color',)
 
 
 class NotFoundSchema(Schema):

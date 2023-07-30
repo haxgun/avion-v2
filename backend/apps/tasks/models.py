@@ -15,7 +15,13 @@ class Tasks(models.Model):
         ('edefault', 'Обычный')
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='tasks',
+    )
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=16384, null=True, blank=True)
     complete = models.BooleanField(default=False, blank=True)
