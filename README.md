@@ -35,7 +35,7 @@ pipenv run migrate
 pipenv run server
 ```
 
-> **Если необходимо создать суперпользователя** \
+> **Если необходимо создать суперпользователя**
 > ```
 > pipenv run createsuperuser
 > ```
