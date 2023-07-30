@@ -9,18 +9,18 @@ router = Router()
 
 
 @router.post('/')
-async def create_task(request, payload: CategoryIn) -> dict:
+async def create_category(request, payload: CategoryIn) -> dict:
     category = await Category.objects.acreate(**payload.dict())
     return {'id': category.id}
 
 
 @router.get('/', response=List[CategoryOut])
-async def list_tasks(request) -> list:
+async def list_categories(request) -> list:
     return [category async for category in Category.objects.all()]
 
 
 @router.get('/{category_id}', response=CategoryOut)
-async def detail_task(request, category_id: int) -> dict:
+async def detail_category(request, category_id: int) -> dict:
     try:
         return await Category.objects.aget(id=category_id)
     except Category.DoesNotExist as e:
@@ -28,7 +28,7 @@ async def detail_task(request, category_id: int) -> dict:
 
 
 @router.put('/{category_id}')
-async def update_task(request, category_id: int, payload: CategoryIn) -> dict:
+async def update_category(request, category_id: int, payload: CategoryIn) -> dict:
     try:
         category = await Category.objects.aget(id=category_id)
         for attribute, value in payload.dict().items():
@@ -40,7 +40,7 @@ async def update_task(request, category_id: int, payload: CategoryIn) -> dict:
 
 
 @router.delete('/{category_id}')
-async def delete_task(request, category_id: int) -> dict:
+async def delete_category(request, category_id: int) -> dict:
     try:
         category = await Category.objects.aget(id=category_id)
         await category.adelete()
