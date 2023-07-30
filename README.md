@@ -1,7 +1,7 @@
 <p></p>
 <p align="center">
-	<img width="300" src="media/AvionBanner.png#gh-light-mode-only"/>
-	<img width="300" src="media/AvionBannerInverted.png#gh-dark-mode-only"/>
+	<img width="300" src=".github/media/AvionBanner.png#gh-light-mode-only"/>
+	<img width="300" src=".github/media/AvionBannerInverted.png#gh-dark-mode-only"/>
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.11.4-informational.svg">
