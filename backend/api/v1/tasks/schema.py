@@ -5,8 +5,8 @@ from typing import Optional
 from ninja import Schema, ModelSchema
 from apps.tasks.models import Tasks
 
-from api.v1.users.schema import UserOut, UserOutF
-from api.v1.categories.schema import CategoryOut, CategoryOutF
+from api.v1.users.schema import UserOut
+from api.v1.categories.schema import CategoryOut
 
 
 class PriorityEnum(str, Enum):
@@ -17,29 +17,25 @@ class PriorityEnum(str, Enum):
     edefault = 'Обычный'
 
 
-class TaskIn(Schema):
+class TaskIn(ModelSchema):
     user_id: int
-    title: str
-    description: Optional[str] = ''
-    complete: bool = False
-    creation_date: datetime = date.today()
-    due_date: Optional[datetime]
-    is_attached: bool = False
-    category: Optional[int]
+    category_id: Optional[int]
+    due_date: Optional[datetime] = None
     priority: PriorityEnum = PriorityEnum.edefault
+
+    class Config:
+        model = Tasks
+        model_fields = ('title', 'description', 'complete', 'creation_date', 'is_attached',)
 
 
 class TaskOut(Schema):
-    id: int
     user: UserOut
-    title: str
-    description: Optional[str] = ''
-    complete: bool = False
-    creation_date: datetime = date.today()
-    due_date: Optional[datetime]
-    is_attached: bool = False
     category: Optional[CategoryOut]
     priority: PriorityEnum
+
+    class Config:
+        model = Tasks
+        model_fields = ('id', 'title', 'description', 'complete', 'creation_date', 'due_date', 'is_attached')
 
 
 class NotFoundSchema(Schema):
