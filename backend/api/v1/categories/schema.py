@@ -7,16 +7,19 @@ from api.v1.users.schema import UserOut
 
 
 class CategoryOut(ModelSchema):
+    user: UserOut
+
     class Config:
         model = Category
-        model_fields = '__all__'
+        model_fields = ('id', 'title', 'description', 'color')
 
 
 class CategoryIn(ModelSchema):
+    user_id: int
+
     class Config:
         model = Category
-        model_fields = '__all__'
-        model_exclude = ('id',)
+        model_fields = ('title', 'description', 'color')
 
 
 class NotFoundSchema(Schema):
