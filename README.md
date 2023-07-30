@@ -34,3 +34,8 @@ cd backend
 pipenv run migrate
 pipenv run server
 ```
+
+> **Если необходимо создать суперпользователя** \
+> ```
+> pipenv run createsuperuser
+> ```

@@ -21,4 +21,5 @@ python_version = "3.11"
 
 [scripts]
 migrate = "python manage.py migrate"
+createsuperuser = "python manage.py createsuperuser"
 server = "uvicorn config.asgi:application --reload"
