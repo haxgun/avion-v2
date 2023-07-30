@@ -13,6 +13,9 @@ whitenoise = "==6.5.0"
 python-dotenv = "*"
 django-ninja = "*"
 uvicorn = "*"
+django-ninja-jwt = "*"
+django-ninja-extra = "*"
+six = "*"
 
 [dev-packages]
 
