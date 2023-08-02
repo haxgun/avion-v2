@@ -26,7 +26,7 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-pae)@rir#g0^2#fncf)bh(yj%*&pg35($w%qd$)3!=ksqcm#cr"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / os.environ["DB_NAME"],
     }
 }
 
