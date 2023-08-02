@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'apps.tasks.apps.TasksConfig',
     'apps.users.apps.UsersConfig',
 
+    'ninja',
     'ninja_extra',
     'ninja_jwt',
     'corsheaders',

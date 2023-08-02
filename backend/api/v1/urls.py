@@ -10,7 +10,7 @@ from api.v1.controller import CustomController
 api = NinjaExtraAPI(
     title="Avion API",
     description="Simple but effective to-do list app aimed at modern design and ease of use.",
-    auth=JWTAuth()
+    auth=JWTAuth(),
 )
 api.register_controllers(CustomController)
 
