@@ -22,9 +22,9 @@ async def get_user(request, user_id: int) -> dict:
 
 
 @router.post('/register/', response={200: UserRegistrationAndLoginOutput, 404: NotFoundSchema}, auth=None)
-def register_user(request, payload: UserRegistrationInput) -> dict:
+async def register_user(request, payload: UserRegistrationInput) -> dict:
     if not User.objects.filter(email=payload.email).exists():
-        user = User.objects.create_user(email=payload.email, nickname=payload.nickname, password=payload.password)
+        user = User.objects.create_user(**payload.dict())
         if user:
             login(request, user)
             return 200, {'id': user.id}
@@ -32,8 +32,8 @@ def register_user(request, payload: UserRegistrationInput) -> dict:
 
 
 @router.post('/login/', response={200: UserRegistrationAndLoginOutput, 402: NotFoundSchema}, auth=None)
-def login_user(request, payload: UserLoginInput) -> dict:
-    user = authenticate(email=payload.email, password=payload.password)
+async def login_user(request, payload: UserLoginInput) -> dict:
+    user = authenticate(**payload.dict())
     if user:
         login(request, user)
         return 200, {'id': user.id}
