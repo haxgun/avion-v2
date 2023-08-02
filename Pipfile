@@ -16,6 +16,7 @@ uvicorn = "*"
 django-ninja-jwt = "*"
 django-ninja-extra = "*"
 six = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
