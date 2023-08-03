@@ -203,11 +203,27 @@ main .blick {
 }
 
 .welcome .container .hello-text h1 u {
+  animation: flow 15s ease-in-out infinite;
   text-decoration: 0;
   background: -webkit-linear-gradient(320deg, #b5deff, var(--light-blue));
-  background-clip: text;
+  background-size: 300%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 .welcome .container .hello-text p.description {
