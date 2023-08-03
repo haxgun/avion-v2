@@ -22,14 +22,18 @@ body {
   color: var(--main-text-color);
 }
 
+p {
+  margin: 0;
+}
+
 .header {
   max-width: 1342px;
   padding: 30px;
   margin: 0 auto;
-  position: relative;
+  position: sticky;
+  backdrop-filter: blur(12px);
   line-height: 34px;
   z-index: 20000;
-  background: #fff;
   position: fixed;
   left: 0;
   right: 0;
@@ -40,13 +44,13 @@ body {
   justify-content: space-between;
 }
 
+.header .logo {
+  line-height: 0;
+}
+
 .header .header__leftpart {
   float: left;
   display: flex;
-}
-
-.header .header__leftpart .logo {
-  line-height: 0;
 }
 
 .header .header__rightpart {
@@ -54,7 +58,6 @@ body {
 }
 
 .navbar {
-  margin-left: 30px;
   font-size: 17px;
   font-weight: 600;
 }
@@ -72,21 +75,27 @@ body {
 }
 
 .navbar ul li a {
-  color: var(--second-text-color);
+  color: var(--main-text-color);
   transition: color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
 .navbar ul li a:hover {
-  color: var(--main-text-color);
   box-shadow: 0 2px 0 black;
 }
 
 button {
   display: inline-flex;
   gap: 5px;
-  background: var(--light-blue);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(0, 143, 253);
+  box-shadow: rgba(12, 20, 66, 0.1) 0px 2px 4px,
+    rgba(12, 20, 66, 0.06) 0px 10px 40px,
+    rgba(12, 20, 66, 0.1) 0px -1px 2px inset;
   border: none;
-  border-radius: 24px;
+  border-radius: 32px;
   font-weight: 600;
   line-height: 0;
   color: #fff;
@@ -98,46 +107,117 @@ button {
 }
 
 button:hover {
-  background: #0073df;
-  color: #fff;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(0, 135, 253);
 }
 
 button:active {
-  scale: 1.05;
+  scale: 1.02;
   box-shadow: 0 0 0 3px rgba(0, 115, 223, 0.4);
+}
+
+button.gray {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(236, 239, 242);
+
+  box-shadow: rgba(12, 20, 66, 0.02) 0px 2px 4px,
+    rgba(12, 20, 66, 0.03) 0px -1px 2px inset;
+
+  color: var(--main-text-color);
+}
+
+button.gray:hover {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(234, 237, 240);
+}
+
+button.gray:active {
+  box-shadow: 0 0 0 3px rgb(185 185 185 / 30%);
+}
+
+button.watch-video {
+  padding: 14px 28px 14px 24px;
 }
 
 button.get-start {
   padding: 14px 22px 14px 28px;
 }
 
-main section {
-  height: 100vh;
-  display: flex;
+main .blick {
+  position: absolute;
+  width: 60%;
+  height: 260px;
+  top: 0px;
+  right: 30%;
+  pointer-events: none;
+  border-radius: 120px 20px;
+  opacity: 0.3;
+  box-shadow: var(--light-blue) 20px 250px 300px;
+  transform: rotate(15deg) translateY(-175%) translateZ(0px);
 }
 
-main section .container {
+.welcome {
+  display: flex;
+  padding: 260px 30px 0;
+}
+
+.welcome .container {
   margin: auto;
 }
 
-main section .container .hello-text {
+.welcome .container .hello-text {
   text-align: center;
+  display: grid;
+  justify-items: center;
+}
+
+.welcome .container .hello-text .intro_image {
+  background-color: rgb(239, 242, 245);
+  border-radius: 20px;
+  box-shadow: rgba(12, 20, 66, 0.02) 0px 4px 12px,
+    rgba(12, 20, 66, 0.08) 0px 30px 80px,
+    rgb(230, 233, 237) 0px 0px 0px 1px inset;
+  max-width: 1100px;
+}
+
+.welcome .container .hello-text .intro_image img {
+  max-width: inherit;
 }
 
 .welcome .container .hello-text h1 {
   max-width: 11em;
   font-weight: 900;
   font-size: 64px;
+  line-height: 1;
 }
 
 .welcome .container .hello-text h1 u {
   text-decoration: 0;
-  box-shadow: 0 5px 0 var(--light-blue);
+  background: -webkit-linear-gradient(320deg, #b5deff, var(--light-blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .welcome .container .hello-text p.description {
   color: var(--second-text-color);
   font-size: 18px;
   font-weight: 500;
+  max-width: 410px;
   margin-bottom: 40px;
+}
+
+.welcome .container .hello-text .hello-text__buttons {
+  margin-bottom: 100px;
+  display: flex;
+  gap: 10px;
 }
