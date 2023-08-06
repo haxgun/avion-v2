@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 import os
 from datetime import timedelta
 
@@ -101,7 +102,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / os.environ["DB_NAME"],
+        'NAME': BASE_DIR / os.environ['DB_NAME'],
     }
 }
 
@@ -183,12 +184,12 @@ NINJA_JWT = {
 
     # For Controller Schemas
     # FOR OBTAIN PAIR
-    'TOKEN_OBTAIN_PAIR_INPUT_SCHEMA': "ninja_jwt.schema.TokenObtainPairInputSchema",
-    'TOKEN_OBTAIN_PAIR_REFRESH_INPUT_SCHEMA': "ninja_jwt.schema.TokenRefreshInputSchema",
+    'TOKEN_OBTAIN_PAIR_INPUT_SCHEMA': 'ninja_jwt.schema.TokenObtainPairInputSchema',
+    'TOKEN_OBTAIN_PAIR_REFRESH_INPUT_SCHEMA': 'ninja_jwt.schema.TokenRefreshInputSchema',
     # FOR SLIDING TOKEN
-    'TOKEN_OBTAIN_SLIDING_INPUT_SCHEMA': "ninja_jwt.schema.TokenObtainSlidingInputSchema",
-    'TOKEN_OBTAIN_SLIDING_REFRESH_INPUT_SCHEMA':"ninja_jwt.schema.TokenRefreshSlidingInputSchema",
+    'TOKEN_OBTAIN_SLIDING_INPUT_SCHEMA': 'ninja_jwt.schema.TokenObtainSlidingInputSchema',
+    'TOKEN_OBTAIN_SLIDING_REFRESH_INPUT_SCHEMA':'ninja_jwt.schema.TokenRefreshSlidingInputSchema',
 
-    'TOKEN_BLACKLIST_INPUT_SCHEMA': "ninja_jwt.schema.TokenBlacklistInputSchema",
-    'TOKEN_VERIFY_INPUT_SCHEMA': "ninja_jwt.schema.TokenVerifyInputSchema",
+    'TOKEN_BLACKLIST_INPUT_SCHEMA': 'ninja_jwt.schema.TokenBlacklistInputSchema',
+    'TOKEN_VERIFY_INPUT_SCHEMA': 'ninja_jwt.schema.TokenVerifyInputSchema',
 }
