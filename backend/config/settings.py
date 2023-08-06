@@ -31,7 +31,12 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
+
+if DEBUG:
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'config.production_settings'
+else:
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'config.local_settings'
 
 DOMAIN_NAME = 'https://127.0.0.1:8000'
 ALLOWED_HOSTS = []
