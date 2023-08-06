@@ -31,8 +31,16 @@ cd avion-v2
 python -m pip install pipenv
 pipenv install
 cd backend
+nano .env
 pipenv run migrate
 pipenv run server
+```
+
+### В .env необходимо добавить следующее
+```
+DEBUG= # true или false
+SECRET_KEY='' # необходимо вставить свой секретный ключ
+DB_NAME='' # название базы данных
 ```
 
 > **Если необходимо создать суперпользователя**
