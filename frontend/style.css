@@ -15,7 +15,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeSpeed;
-  overflow: hidden;
   margin: 0;
   padding: 0;
   background-color: #fff;
@@ -24,6 +23,10 @@ body {
 
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 .header {
@@ -152,6 +155,14 @@ button.get-start {
   padding: 14px 22px 14px 28px;
 }
 
+main,
+footer {
+  max-width: 1140px;
+  margin: 0px auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 main .blick {
   position: absolute;
   width: 60%;
@@ -167,7 +178,7 @@ main .blick {
 
 .welcome {
   display: flex;
-  padding: 260px 30px 0;
+  padding-top: 260px;
 }
 
 .welcome .container {
@@ -242,4 +253,142 @@ main .blick {
   margin-bottom: 100px;
   display: flex;
   gap: 10px;
+}
+
+.advantages {
+  margin: 120px 0px 0px 0px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  gap: 32px;
+}
+
+.advantages .full {
+  position: relative;
+  padding-bottom: 45%;
+  background-color: rgb(244, 244, 245);
+  border-radius: 20px;
+  grid-column: 1 / 3;
+  overflow: hidden;
+  mask-image: -webkit-radial-gradient(white, black);
+}
+
+.advantages .full .text {
+  position: absolute;
+  z-index: 2;
+  left: 60px;
+  top: 60px;
+  right: 60px;
+  display: grid;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.advantages .full .text h1 {
+  color: rgb(25, 25, 27);
+  margin: 0px;
+  font-size: 32px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.advantages .full .text p {
+  font-size: 18px;
+  margin: 0px;
+  color: rgb(97, 104, 112);
+}
+
+.advantages .half {
+  position: relative;
+  padding-bottom: 100%;
+  background-color: rgb(244, 244, 245);
+  border-radius: 20px;
+  overflow: hidden;
+  mask-image: -webkit-radial-gradient(white, black);
+}
+
+.advantages .half .text {
+  position: absolute;
+  z-index: 2;
+  left: 60px;
+  top: 60px;
+  right: 60px;
+  display: grid;
+  gap: 16px;
+  max-width: 360px;
+}
+
+.advantages .half .text h1 {
+  color: rgb(25, 25, 27);
+  margin: 0px;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.advantages .half .text p {
+  font-size: 18px;
+  margin: 0px;
+  color: rgb(97, 104, 112);
+}
+
+footer {
+  padding: 80px 0;
+}
+
+footer .footer {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+}
+
+footer .footer .info ul {
+  list-style: none;
+  display: list-item;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer .info ul li {
+  color: #737373;
+  display: block;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+footer .footer .info ul li h4 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #030303;
+}
+
+footer .footer .links {
+  display: flex;
+  gap: 12px;
+}
+
+footer .footer .links a {
+  cursor: pointer;
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  transition: background-color 0.2s;
+  background-color: rgb(236, 239, 242);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px,
+    rgba(0, 0, 0, 0.03) 0px -1px 2px inset;
+}
+
+footer .footer .links a:hover {
+  background-color: rgb(233, 236, 239);
+}
+
+footer .footer .links a:active {
+  background-color: rgb(230, 233, 237);
 }
