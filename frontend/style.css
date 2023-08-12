@@ -262,6 +262,7 @@ main .blick {
   display: grid;
   grid-template-columns: repeat(2, minmax(0px, 1fr));
   gap: 32px;
+  line-height: 1.45;
 }
 
 .advantages .full {
