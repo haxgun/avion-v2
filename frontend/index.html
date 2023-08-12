@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Avion</title>
 
-    <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link
       rel="stylesheet"
@@ -18,6 +17,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -43,6 +43,23 @@
               </li>
               <li>
                 <a>Community</a>
+                <span style="line-height: 0"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
               </li>
               <li>
                 <a>Blog</a>
@@ -102,7 +119,6 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-
                 <span>Watch Video</span>
               </button>
               <button class="get-start">
@@ -116,7 +132,7 @@
                 >
                   <path
                     d="M6 17L11 12L6 7M13 17L18 12L13 7"
-                    stroke="white"
+                    stroke="var(--button-color)"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -133,7 +149,9 @@
       <section class="advantages">
         <div class="card full">
           <div class="text">
-            <span class="label">Some text</span>
+            <span style="color: rgb(221 49 7)" class="label"
+              >Capture Ideas Swiftly</span
+            >
             <h1>Turn Ideas into Reality with a Single Touch</h1>
             <p>
               Never miss important moments! With Avion, you can effortlessly add
@@ -145,7 +163,9 @@
         </div>
         <div class="card half">
           <div class="text">
-            <span class="label">Some text</span>
+            <span style="color: rgb(235 153 0)" class="label"
+              >Prioritize with Precision</span
+            >
             <h1>Your World, Your Order</h1>
             <p>
               Organize your tasks as you prefer. Avion enables you to create
@@ -156,7 +176,9 @@
         </div>
         <div class="card half">
           <div class="text">
-            <span class="label">Some text</span>
+            <span style="color: rgb(83 188 42)" class="label"
+              >Style Your Workspace</span
+            >
             <h1>Design Reflects Your Style</h1>
             <p>
               Your workspace, your style. Avion offers you a range of themes to
@@ -167,7 +189,9 @@
         </div>
         <div class="card full">
           <div class="text">
-            <span class="label">Some text</span>
+            <span style="color: rgb(120 58 245)" class="label"
+              >Details Make Triumphs</span
+            >
             <h1>Details: The Key to Success</h1>
             <p>
               Details matter! Evaluate tasks by priority, attach notes and files
@@ -339,8 +363,10 @@
             <a href="">Privacy</a>
             <a href="ß">Conditions</a>
           </ul>
-          <p>Made with ❤️</p>
-          <p>Copyright © 2023 Avion</p>
+          <p>Made with ❤️ in Russia</p>
+          <p>
+            Copyright © 2023 <span style="color: var(--light-blue)">Avion</span>
+          </p>
         </div>
       </div>
     </footer>
