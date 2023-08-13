@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Avion</title>
 
-    <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link
       rel="stylesheet"
@@ -18,6 +17,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -39,19 +39,36 @@
           <nav class="navbar">
             <ul class="navbar__sitemenu">
               <li>
-                <a>About</a>
-              </li>
-              <li>
                 <a>Updates</a>
               </li>
               <li>
-                <a>Contact Us</a>
+                <a>Community</a>
+                <span style="line-height: 0"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </li>
+              <li>
+                <a>Blog</a>
               </li>
             </ul>
           </nav>
         </div>
         <div class="header__rightpart">
-          <button class="button__login">Login</button>
+          <button class="login">Login</button>
         </div>
       </div>
     </header>
@@ -60,6 +77,26 @@
       <section class="welcome">
         <div class="container">
           <div class="hello-text">
+            <a class="tracker" href="">
+              <span>
+                <svg
+                  width="0.9em"
+                  height="0.9em"
+                  viewBox="0 0 24 24"
+                  fill="var(--tracker-text-color)"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 22V17M4.5 7V2M2 4.5H7M2 19.5H7M13 3L11.2658 7.50886C10.9838 8.24209 10.8428 8.60871 10.6235 8.91709C10.4292 9.1904 10.1904 9.42919 9.91709 9.62353C9.60871 9.84281 9.24209 9.98381 8.50886 10.2658L4 12L8.50886 13.7342C9.24209 14.0162 9.60871 14.1572 9.91709 14.3765C10.1904 14.5708 10.4292 14.8096 10.6235 15.0829C10.8428 15.3913 10.9838 15.7579 11.2658 16.4911L13 21L14.7342 16.4911C15.0162 15.7579 15.1572 15.3913 15.3765 15.0829C15.5708 14.8096 15.8096 14.5708 16.0829 14.3765C16.3913 14.1572 16.7579 14.0162 17.4911 13.7342L22 12L17.4911 10.2658C16.7579 9.98381 16.3913 9.8428 16.0829 9.62353C15.8096 9.42919 15.5708 9.1904 15.3765 8.91709C15.1572 8.60871 15.0162 8.24209 14.7342 7.50886L13 3Z"
+                    stroke="var(--tracker-text-color)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>Some new features!</span>
+            </a>
             <h1>Organize your day, <u>the smart</u> way!</h1>
             <p class="description">
               Avion is a simple but effective to-do list app aimed at modern
@@ -82,7 +119,6 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-
                 <span>Watch Video</span>
               </button>
               <button class="get-start">
@@ -96,7 +132,7 @@
                 >
                   <path
                     d="M6 17L11 12L6 7M13 17L18 12L13 7"
-                    stroke="white"
+                    stroke="var(--button-color)"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -111,36 +147,56 @@
         </div>
       </section>
       <section class="advantages">
-        <div class="full">
+        <div class="card full">
           <div class="text">
-            <h1>Some text</h1>
+            <span style="color: rgb(221 49 7)" class="label"
+              >Capture Ideas Swiftly</span
+            >
+            <h1>Turn Ideas into Reality with a Single Touch</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
-              praesentium tempora nobis, molestias temporibus rerum impedit
-              placeat, minus, sed doloribus veritatis officiis! Distinctio amet
-              tempore laborum libero exercitationem ducimus eius.
+              Never miss important moments! With Avion, you can effortlessly add
+              tasks and to-dos in an instant. Whether it's a note, a deadline,
+              or crucial milestones, we'll help you input everything into your
+              task list."
             </p>
           </div>
         </div>
-        <div class="half">
+        <div class="card half">
           <div class="text">
-            <h1>Some text</h1>
+            <span style="color: rgb(235 153 0)" class="label"
+              >Prioritize with Precision</span
+            >
+            <h1>Your World, Your Order</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
-              praesentium tempora nobis, molestias temporibus rerum impedit
-              placeat, minus, sed doloribus veritatis officiis! Distinctio amet
-              tempore laborum libero exercitationem ducimus eius.
+              Organize your tasks as you prefer. Avion enables you to create
+              categories. Sort tasks by date, priority, or category to always
+              stay in the loop about what matters today."
             </p>
           </div>
         </div>
-        <div class="half">
+        <div class="card half">
           <div class="text">
-            <h1>Some text</h1>
+            <span style="color: rgb(83 188 42)" class="label"
+              >Style Your Workspace</span
+            >
+            <h1>Design Reflects Your Style</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
-              praesentium tempora nobis, molestias temporibus rerum impedit
-              placeat, minus, sed doloribus veritatis officiis! Distinctio amet
-              tempore laborum libero exercitationem ducimus eius.
+              Your workspace, your style. Avion offers you a range of themes to
+              choose from, ensuring your eyes always delight in the convenience
+              and beauty of the interface.
+            </p>
+          </div>
+        </div>
+        <div class="card full">
+          <div class="text">
+            <span style="color: rgb(120 58 245)" class="label"
+              >Details Make Triumphs</span
+            >
+            <h1>Details: The Key to Success</h1>
+            <p>
+              Details matter! Evaluate tasks by priority, attach notes and files
+              to ensure nothing escapes your attention. Avion allows you to
+              focus on the finer points, enabling you to achieve great results."
             </p>
           </div>
         </div>
@@ -307,8 +363,10 @@
             <a href="">Privacy</a>
             <a href="ß">Conditions</a>
           </ul>
-          <p>Made with ❤️</p>
-          <p>Copyright © 2023 Avion</p>
+          <p>Made with ❤️ in Russia</p>
+          <p>
+            Copyright © 2023 <span style="color: var(--light-blue)">Avion</span>
+          </p>
         </div>
       </div>
     </footer>
